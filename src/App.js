@@ -5,9 +5,9 @@ const entryRepository = new EntryRepository();
 
 function App() {
   const [formData, setFormData] = useState(entryRepository.getAllEntries());
-  
+
   const [selectedEntry, setSelectedEntry] = useState(null);
-  
+
   const [newEntry, setNewEntry] = useState({
     date: '',
     amount: '',
@@ -31,10 +31,6 @@ function App() {
         setFormData(entryRepository.getAllEntries());
         setSelectedEntry(null);
       }
-    } else {
-      // Add new entry
-      entryRepository.addEntry(newEntry);
-      setFormData(entryRepository.getAllEntries());
     }
 
     setNewEntry({
@@ -64,6 +60,25 @@ function App() {
     });
   };
 
+  const handleCreate = (event) => {
+    event.preventDefault();
+    
+    // Add new entry
+    const addedData = entryRepository.addEntry(newEntry);
+    
+    if (addedData) {
+      setFormData(entryRepository.getAllEntries());
+      setSelectedEntry(null);
+    }
+
+    setNewEntry({
+      date: '',
+      amount: '',
+      account: '',
+      category: '',
+      concept1: ''
+    });
+  };
 
   return (
     <div>
@@ -112,10 +127,10 @@ function App() {
           onChange={handleChange}
         ></textarea>
 
-        <button type="submit">{selectedEntry ? 'Update' :'Submit'}
-        </button>
+        {selectedEntry ? <button type="submit">Update</button> : ''}
+        <button onClick={handleCreate}>Submit</button>
       </form>
-      
+
       <h2>Submitted Data:</h2>
       {formData.length > 0 ? (
         <table>
