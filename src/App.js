@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import EntryRepository from './EntryRepository';
+import categoriesConfig from './categoriesConfig.json';
 
 const entryRepository = new EntryRepository();
 
 function App() {
   const [formData, setFormData] = useState(entryRepository.getAllEntries());
-
+  const [categories, setCategories] = useState(categoriesConfig.categories);
   const [selectedEntry, setSelectedEntry] = useState(null);
 
   const [newEntry, setNewEntry] = useState({
@@ -113,11 +114,10 @@ function App() {
           name="category"
           value={newEntry.category}
           onChange={handleChange}
-        >
-          <option value="">Select a category</option>
-          <option value="category1">Category 1</option>
-          <option value="category2">Category 2</option>
-          <option value="category3">Category 3</option>
+        ><option value="">Select a category</option>
+        {categories.map((category, index) => (
+          <option key={index} value={category}>{category}</option>
+        ))}
         </select>
 
         <label>Concept 1:</label>
