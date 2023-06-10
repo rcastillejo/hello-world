@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import EntryRepository from './EntryRepository';
-import categoriesConfig from './categoriesConfig.json';
+import dataListConfig from './dataListConfig.json';
 
 const entryRepository = new EntryRepository();
 
 function App() {
   const [formData, setFormData] = useState(entryRepository.getAllEntries());
-  const [categories, setCategories] = useState(categoriesConfig.categories);
+  const [categories, setCategories] = useState(dataListConfig.categories);
+  const [accounts, setAccounts] = useState(dataListConfig.accounts);
+
   const [selectedEntry, setSelectedEntry] = useState(null);
 
   const [newEntry, setNewEntry] = useState({
@@ -93,12 +95,15 @@ function App() {
         />
 
         <label>Cuenta:</label>
-        <input
-          type="text"
+        <select
           name="account"
           value={newEntry.account}
           onChange={handleChange}
-        />
+        ><option value="">Select an account</option>
+        {accounts.map((account, index) => (
+          <option key={index} value={account}>{account}</option>
+        ))}
+        </select>
 
         <label>Categoria:</label>
         <select
