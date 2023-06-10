@@ -7,25 +7,28 @@ class EntryRepository {
           id: 1,
           date: '2023-06-01',
           amount: 100,
-          account: 'Savings',
-          category: 'Expense',
-          concept1: 'Groceries'
+          account: 'Familia',
+          category: 'Entretenimiento',
+          concept1: 'Visita Familiar',
+          concept2: 'Cena'
         },
         {
           id: 2,
           date: '2023-06-02',
           amount: 50,
-          account: 'Checking',
-          category: 'Expense',
-          concept1: 'Dining Out'
+          account: 'Familia',
+          category: 'Entretenimiento',
+          concept1: 'Visita Familiar',
+          concept2: 'Movilidad'
         },
         {
           id: 3,
           date: '2023-06-03',
           amount: 200,
-          account: 'Savings',
-          category: 'Income',
-          concept1: 'Salary'
+          account: 'Familia',
+          category: 'Entretenimiento',
+          concept1: 'Cine',
+          concept2: 'Movilidad'
         }
       ];
   }

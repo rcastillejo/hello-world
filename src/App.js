@@ -14,7 +14,8 @@ function App() {
     amount: '',
     account: '',
     category: '',
-    concept1: ''
+    concept1: '',
+    concept2: ''
   });
 
   const handleChange = (event) => {
@@ -39,7 +40,8 @@ function App() {
       amount: '',
       account: '',
       category: '',
-      concept1: ''
+      concept1: '',
+      concept2: ''
     });
   };
 
@@ -65,7 +67,8 @@ function App() {
       amount: '',
       account: '',
       category: '',
-      concept1: ''
+      concept1: '',
+      concept2: ''
     });
   };
 
@@ -73,7 +76,7 @@ function App() {
     <div>
       <h1>Hello, World!</h1>
       <form onSubmit={handleSubmit}>
-        <label>Date:</label>
+        <label>Fecha:</label>
         <input
           type="date"
           name="date"
@@ -81,7 +84,7 @@ function App() {
           onChange={handleChange}
         />
 
-        <label>Amount:</label>
+        <label>Monto:</label>
         <input
           type="number"
           name="amount"
@@ -89,7 +92,7 @@ function App() {
           onChange={handleChange}
         />
 
-        <label>Account:</label>
+        <label>Cuenta:</label>
         <input
           type="text"
           name="account"
@@ -97,7 +100,7 @@ function App() {
           onChange={handleChange}
         />
 
-        <label>Category:</label>
+        <label>Categoria:</label>
         <select
           name="category"
           value={newEntry.category}
@@ -108,12 +111,19 @@ function App() {
         ))}
         </select>
 
-        <label>Concept 1:</label>
-        <textarea
+        <label>Concepto 1:</label>
+        <input
           name="concept1"
           value={newEntry.concept1}
           onChange={handleChange}
-        ></textarea>
+          />
+
+        <label>Concepto 2:</label>
+        <input
+          name="concept2"
+          value={newEntry.concept2}
+          onChange={handleChange}
+          />
 
         {selectedEntry ? <button type="submit">Update</button> : ''}
         <button onClick={handleCreate}>Submit</button>
@@ -124,12 +134,13 @@ function App() {
         <table>
           <thead>
             <tr>
-              <th>Date</th>
-              <th>Amount</th>
-              <th>Account</th>
-              <th>Category</th>
-              <th>Concept 1</th>
-              <th>Actions</th>
+              <th>Fecha</th>
+              <th>Monto</th>
+              <th>Cuenta</th>
+              <th>Categoria</th>
+              <th>Concepto 1</th>
+              <th>Concepto 2</th>
+              <th></th>
             </tr>
           </thead>
           <tbody>
@@ -140,6 +151,7 @@ function App() {
                 <td>{entry.account}</td>
                 <td>{entry.category}</td>
                 <td>{entry.concept1}</td>
+                <td>{entry.concept2}</td>
                 <td>
                   <button onClick={() => handleEdit(entry.id)}>Edit</button>
                 </td>
