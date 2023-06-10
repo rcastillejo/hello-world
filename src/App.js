@@ -1,11 +1,17 @@
 import React, { useState } from 'react';
 import EntryRepository from './EntryRepository';
+import SpreadEntryRepository from './SpreadEntryRepository';
 import dataListConfig from './dataListConfig.json';
 
 const entryRepository = new EntryRepository();
+const spreadSheetId = '1xISzwgBZAij6VJLJTjgsOinIHCgZ5NKIyYXy2cGvRsg';
+const spreadEntryRepository = new SpreadEntryRepository(spreadSheetId);
 
 function App() {
   const [formData, setFormData] = useState(entryRepository.getAllEntries());
+  
+  spreadEntryRepository.readSpreadsheet();
+
   const [categories, setCategories] = useState(dataListConfig.categories);
   const [accounts, setAccounts] = useState(dataListConfig.accounts);
 
