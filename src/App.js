@@ -49,18 +49,6 @@ function App() {
     setNewEntry({ ...selectedData });
   };
 
-  const handleDelete = (id) => {
-    entryRepository.deleteEntry(id);
-    setFormData(entryRepository.getAllEntries());
-    setNewEntry({
-      date: '',
-      amount: '',
-      account: '',
-      category: '',
-      concept1: ''
-    });
-  };
-
   const handleCreate = (event) => {
     event.preventDefault();
     
@@ -154,7 +142,6 @@ function App() {
                 <td>{entry.concept1}</td>
                 <td>
                   <button onClick={() => handleEdit(entry.id)}>Edit</button>
-                  <button onClick={() => handleDelete(entry.id)}>Delete</button>
                 </td>
               </tr>
             ))}
