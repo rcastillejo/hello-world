@@ -76,7 +76,7 @@ function App() {
 
   return (
     <div>
-      <h1>Hello, World!</h1>
+      <h1>Hello, Financial App!</h1>
       <form onSubmit={handleSubmit}>
         <label>Fecha:</label>
         <input
